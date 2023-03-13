@@ -20,6 +20,7 @@ Use a better box model (opinionated).
 
 .results{
   position: absolute;
+  margin-right: 30px;
 }
 /**
 Use a more readable tab size (opinionated).
