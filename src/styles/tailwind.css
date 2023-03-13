@@ -11,12 +11,16 @@ Document
 Use a better box model (opinionated).
 */
 
+
 *,
 ::before,
 ::after {
   box-sizing: border-box;
 }
 
+.results{
+  position: absolute;
+}
 /**
 Use a more readable tab size (opinionated).
 */
@@ -343,7 +347,12 @@ button {
   background-color: transparent;
   background-image: none;
 }
-
+/* .results1{
+  display: none;
+}
+.results2{
+  display: visible;
+} */
 /**
  * Work around a Firefox/IE bug where the transparent `button` background
  * results in a loss of the default `button` focus styles.
