@@ -62,37 +62,7 @@ function App() {
           success: callback,
         });
       }
-      if (website === "ebay") {
-        console.log("ebay");
-        $.ajax({
-          url: "https://autosug.ebay.com/autosug",
-          dataType: "jsonp",
-          data: {
-            kwd: querykeyword,
-            v: "jsonp",
-            _dg: "1",
-            sId: "0",
-          },
-          xhrFields: {
-            withCredentials: true
-          },
-          success: callback,
-        });
-      }
-      if (website === "amazon") {
-        console.log("amazon");
-        $.ajax({
-          url: "https://completion.amazon.com/search/complete",
-          dataType: "jsonp",
-          data: {
-            q: querykeyword,
-            method: "completion",
-            "search-alias": "aps",
-            mkt: "1",
-          },
-          success: callback,
-        });
-      }
+   
     }
   };
   const FilterHtmlEntities = (input) => {
@@ -120,23 +90,60 @@ function App() {
     console.log(searchTerm);
     setSearchValue(searchTerm);
     var html = "";
-    html += `
+    html += `<br>
   <table className="results_table" cellspacing="0" cellpadding="5" border="0" align="center">
   <tbody><tr className="odd-row">
-  <th width="16%" align="left">Google</th>
-  <th width="16%" align="left">Yahoo</th>
-  <th width="16%" align="left">Bing</th>
+
   <th width="16%" align="left">Youtube</th>
-  <th width="16%" align="left">Amazon</th>
-  <th width="16%" align="left">Ebay</th>
+  
   </tr>
-     <tr><td id="google"></td><td id="yahoo"></td><td id="bing"></td><td id="youtube"></td><td id="amazon"></td><td id="ebay"></td></tr>
-    </tbody></table>`;
+  
+     <tr><ol><td id="youtube"></td><ol/></tr>
+    </tbody></table>
+
+    <br>
+    <table className="results_table" cellspacing="0" cellpadding="5" border="0" align="center">
+    <tbody><tr className="odd-row">
+    <th width="16%" align="left">Google</th>
+  
+  
+
+    
+    </tr>
+    
+       <tr><td id="google"></td></tr>
+      </tbody></table>
+      <br>
+    <table className="results_table" cellspacing="0" cellpadding="5" border="0" align="center">
+  <tbody><tr className="odd-row">
+
+
+  <th width="16%" align="left">Bing</th>
+
+  
+  </tr>
+     <tr><td id="bing"></td></tr>
+     
+
+    </tbody></table>
+    <br>
+    <table className="results_table" cellspacing="0" cellpadding="5" border="0" align="center">
+    <tbody><tr className="odd-row">
+  
+    <th width="16%" align="left">Yahoo</th>
+
+  
+    
+    </tr>
+       <tr><td id="yahoo"></td></tr>
+       
+  
+      </tbody></table>`;
     if (searchTerm === "") {
       html = `
       <table style="display:none" className="results_table hidden" cellspacing="0" cellpadding="5" border="0" align="center">
       <tbody className="hidden">
-         <tr className="hidden"><td id="google"></td><td id="yahoo"></td><td id="bing"></td><td id="youtube"></td><td id="amazon"></td><td id="ebay"></td></tr>
+         <tr className="hidden"><td id="google"></td><td id="yahoo"></td><td id="bing"></td><td id="youtube"></td></td></tr>
         </tbody></table>`;
       updateResults({ __html: html });
     } else {
@@ -203,44 +210,14 @@ function App() {
         document.getElementById("youtube").innerHTML = "";
         document.getElementById("youtube").innerHTML = sb;
       });
-      GetRelatedTerms(searchTerm, "amazon", function (res) {
-        var retList = res[1];
-        var i = 0;
-        var sb = "";
-        for (i = 0; i < retList.length; i++) {
-          sb =
-            sb +
-            '<a href="http://www.amazon.com/s/?field-keywords=' +
-            encodeURIComponent(FilterHtmlEntities(retList[i])) +
-            '" target="_blank" className="live">' +
-            FilterHtmlEntities(retList[i]) +
-            "</a><br />";
-        }
-        document.getElementById("amazon").innerHTML = "";
-        document.getElementById("amazon").innerHTML = sb;
-      });
-      GetRelatedTerms(searchTerm, "ebay", function (res1) {
-        var retList = res1.res.sug;
-        var i = 0;
-        var sb = "";
-        for (i = 0; i < retList.length; i++) {
-          sb =
-            sb +
-            '<a href="http://www.ebay.com/sch/i.html?_nkw=' +
-            encodeURIComponent(FilterHtmlEntities(retList[i])) +
-            '" target="_blank" className="live">' +
-            FilterHtmlEntities(retList[i]) +
-            "</a><br />";
-        }
-        document.getElementById("ebay").innerHTML = "";
-        document.getElementById("ebay").innerHTML = sb;
-      });
+     
+     
     }
   };
   return (
-    <div className="bg-indigo-200">
+    <div className="bg-black">
       <section className="App h-screen w-full flex justify-center items-center">
-        <div className="w-full bg-white shadow-md rounded px-8 py-8 pt-8">
+        <div className="w-full bg-black shadow-md rounded px-8 py-8 pt-8">
           <h1 className="text-2xl mb-7">Keyword Finder</h1>
           <p className="mb-5">
             A real-time keyword finder shows related terms based on your search
