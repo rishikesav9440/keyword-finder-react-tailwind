@@ -155,11 +155,8 @@ function App() {
         for (i = 0; i < retList.length; i++) {
           sb =
             sb +
-            '<a href="https://www.google.com/search?q=' +
-            encodeURIComponent(FilterHtmlEntities(retList[i])) +
-            '" target="_blank" className="live">' +
             FilterHtmlEntities(retList[i]) +
-            "</a><br />";
+            "<br />";
         }
         document.getElementById("google").innerHTML = "";
         document.getElementById("google").innerHTML = sb;
@@ -169,11 +166,8 @@ function App() {
         $.each(res.gossip.results, function (i, val) {
           sb =
             sb +
-            '<a href="https://search.yahoo.com/search?p=' +
-            encodeURIComponent(FilterHtmlEntities(val.key)) +
-            '" target="_blank" className="live">' +
             FilterHtmlEntities(val.key) +
-            "</a><br />";
+            "<br />";
         });
         document.getElementById("yahoo").innerHTML = "";
         document.getElementById("yahoo").innerHTML = sb;
@@ -185,11 +179,9 @@ function App() {
         for (i = 0; i < retList.length; i++) {
           sb =
             sb +
-            '<a href="http://www.bing.com/search?q=' +
-            encodeURIComponent(FilterHtmlEntities(retList[i])) +
-            '" target="_blank" className="live">' +
+   
             FilterHtmlEntities(retList[i]) +
-            "</a><br />";
+            "<br />";
         }
         document.getElementById("bing").innerHTML = "";
         document.getElementById("bing").innerHTML = sb;
@@ -201,11 +193,8 @@ function App() {
         for (i = 0; i < retList.length; i++) {
           sb =
             sb +
-            '<a href="https://www.youtube.com/results?search_query=' +
-            encodeURIComponent(FilterHtmlEntities(retList[i])) +
-            '" target="_blank" className="live">' +
             FilterHtmlEntities(retList[i]) +
-            "</a><br />";
+            "<br />";
         }
         document.getElementById("youtube").innerHTML = "";
         document.getElementById("youtube").innerHTML = sb;
