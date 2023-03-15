@@ -207,9 +207,9 @@ function App() {
     <div className="bg-black">
       <section className="App h-screen w-full flex justify-center items-center">
         <div className="w-full bg-black shadow-md rounded px-8 py-8 pt-8">
-          <h1 className="text-2xl mb-7">Keyword Finder</h1>
+          <h1 className="text-2xl mb-7">AI Tags Tool</h1>
           <p className="mb-5">
-            A real-time keyword finder shows related terms based on your search
+            A real-time tags finder shows related terms based on your search
           </p>
           <form action="">
             <input
